@@ -55,7 +55,7 @@ def process_subtitle(args):
         else:
             zh_text_pos = ('center', frame_height - 30)
 
-        zh_text_clip = (TextClip(zh_text, font="黑體-簡-中黑", fontsize=zh_text_size, bg_color='black', color='yellow', stroke_width=0.25*scale_factor)
+        zh_text_clip = (TextClip(zh_text, font="C:\\\\Windows\\\\Fonts\\\\mingliu.ttc", fontsize=zh_text_size, bg_color='black', color='yellow', stroke_width=0.25*scale_factor)
             .set_duration(end_time - mid_time)  # Update duration to be from mid_time to end_time
             .set_position(zh_text_pos))
 
@@ -72,9 +72,10 @@ def process_subtitle(args):
 
 def video_to_images(video_file_name: str):
     base_name = video_file_name.rsplit('.', 1)[0]
-    zh_subtitle_file_name = base_name + '.zh.srt'
+    #zh_subtitle_file_name = base_name + '.zh.srt'
+    zh_subtitle_file_name = base_name + '.srt'
 
-    with open(zh_subtitle_file_name, "r") as f:
+    with open(zh_subtitle_file_name, "r",encoding="utf-8") as f:
         zh_subtitles = f.read().split("\n\n")
 
     # Create directory to store frames

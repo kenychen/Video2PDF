@@ -4,6 +4,7 @@ from convert_png_to_pdf import convert_png_to_pdf
 from video_to_images import video_to_images
 import os
 import argparse
+import platform
 
 def main():
     # Set up argument parser
@@ -25,7 +26,19 @@ def main():
 
     # Convert screenshots to PDF
     convert_png_to_pdf(base_name, base_name)
-    os.system(f"open '{base_name}.pdf'")
+
+    #os.system(f"open '{base_name}.pdf'")
+    # 開啟PDF
+    #mac
+    #os.system(f"open '{base_name}.pdf'")
+    #os.system(f"start '{base_name}.pdf'")
+    if platform.system() == "Windows":
+        os.startfile(f"{base_name}.pdf")
+    elif platform.system() == "Darwin":
+        os.system(f"open '{base_name}.pdf'")
+    else:
+        print("不支援的操作系統")
+
 
 if __name__ == "__main__":
     main()
