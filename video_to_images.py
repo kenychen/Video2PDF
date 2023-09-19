@@ -55,7 +55,7 @@ def process_subtitle(args):
         else:
             zh_text_pos = ('center', frame_height - 30)
 
-        zh_text_clip = (TextClip(zh_text, font="C:\\\\Windows\\\\Fonts\\\\mingliu.ttc", fontsize=zh_text_size, bg_color='black', color='yellow', stroke_width=0.25*scale_factor)
+        zh_text_clip = (TextClip(zh_text, font="C:\\\\Windows\\\\Fonts\\\\kaiu.ttf", fontsize=zh_text_size, bg_color='black', color='yellow', stroke_width=0.25*scale_factor)
             .set_duration(end_time - mid_time)  # Update duration to be from mid_time to end_time
             .set_position(zh_text_pos))
 
