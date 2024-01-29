@@ -19,7 +19,7 @@ def generate_srt(video_filename):
     #    video_filename,
     #]
     command_srt = [
-        "asr2.bat",        
+        "fasr2.bat",        
         video_filename,
     ]
 
@@ -30,6 +30,7 @@ if __name__ == "__main__":
     # Set up argument parser
     parser = argparse.ArgumentParser(description="Process video and subtitles.")
     parser.add_argument('video_name', help="Name of the video file to process.")
+    parser.add_argument('--noshow', action='store_true', help="Do not open the PDF file automatically.")    
     #parser.add_argument('--embed', action='store_true', help="Use embedded subtitles.")
 
     # Parse arguments
@@ -59,11 +60,13 @@ if __name__ == "__main__":
     #mac
     #os.system(f"open '{base_name}.pdf'")
     #os.system(f"start '{base_name}.pdf'")
-    if platform.system() == "Windows":
-        os.startfile(f"{base_name}.pdf")
-    elif platform.system() == "Darwin":
-        os.system(f"open '{base_name}.pdf'")
-    else:
-        print("不支援的操作系統")
+    # Open PDF only if --noshow is not set
+    if not args.noshow:
+        if platform.system() == "Windows":
+            os.startfile(f"{base_name}.pdf")
+        elif platform.system() == "Darwin":
+            os.system(f"open '{base_name}.pdf'")
+        else:
+            print("不支援的操作系統")
 
 

@@ -9,6 +9,6 @@ Get-ChildItem -Filter "*.mp4" | ForEach-Object {
         Write-Host "Processing file: $($_.Name)"
 
         # Run python script
-        python D:\Video2PDF\Video2PDF\video2pdf.py --noshow $_.Name
+        python D:\Video2PDF\Video2PDF\video2pdf2.py --noshow $_.Name
     }
 }
